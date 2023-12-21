@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eliminar Documento | EmiSchonhals</title>
+    {% load static %}
+    <!-- Agrega tus enlaces a hojas de estilo o scripts si es necesario -->
+</head>
+<body>
+    <div class="container">
+        <h2>Eliminar Documento</h2>
+        <p>Estás a punto de eliminar el documento "{{ documento.nombre }}".</p>
+        <p>Ingresa tu contraseña para confirmar:</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <label for="password">Contraseña:</label>
+            <input type="password" name="password" required>
+            <button type="submit">Confirmar Eliminación</button>
+        </form>
+        
+        <p><a href="{% url 'cargar_documentos' %}">Cancelar</a></p>
+    </div>
+</body>
+</html>

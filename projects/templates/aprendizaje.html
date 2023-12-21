@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aprendizaje | EmiSchonhals</title>
+
+    {% load static %}
+
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
+    <!-- Enlace al favicon (icono de la pestaña del navegador) -->
+    <link rel="icon" href="{% static 'favicon\icono_navegador.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicon\icono_navegador.png' %}" type="image/x-icon">
+
+    <style>
+        /* Estilos generales del cuerpo de la página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos del contenedor principal */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Estilos del encabezado principal */
+        h1 {
+            text-align: center;
+            color: rgb(17, 223, 205);
+            font-family: 'Copperplate Gothic', sans-serif;
+            margin-top: 50px;
+            font-size: 36px;
+        }
+
+        /* Estilos de los encabezados secundarios */
+        h2,
+        h3 {
+            color: #ff02ea;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        h4 {
+            color: #ff02ea;
+            font-size: 20px;
+            text-align: left;
+        }
+
+        h6 {
+            color: #f8f8f8;
+            font-size: 17px;
+            text-align: center;
+        }
+
+        /* Estilos de las secciones */
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Estilos del enlace con efecto de transición */
+        h5 {
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            color: #00ced1;
+            transition: color 0.3s ease;
+        }
+
+        h5 span,
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Efecto de transición al pasar el ratón sobre el enlace o botón de descarga */
+        a.download-button:hover,
+        a.ver-proyectos:hover {
+            color: #ff02ea;
+            animation: shake 0.5s ease;
+        }
+
+        h5 span {
+            color: #00ced1;
+        }
+
+        /* Estilos de párrafos y elementos de lista */
+        p,
+        li {
+            color: #fff;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Estilos de la sección de currículum */
+        .cv-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos de la imagen del currículum */
+        .cv-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Estilos de los botones de descarga y ver proyectos */
+        a.download-button,
+        a.ver-proyectos {
+            display: inline-block;
+            background-color: #00ced1;
+            color: #0a0909;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 20px;
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+
+        /* Estilos responsivos para párrafos en dispositivos móviles */
+        @media (max-width: 768px) {
+            p {
+                font-size: 16px;
+            }
+        }
+
+        /* Animación de sacudida */
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25%, 75% {
+                transform: translateX(-5px);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+        }
+
+        /* Estilos para la lista de tecnologías */
+        ul.technologies {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        ul.technologies li {
+            margin-right: 15px;
+            margin-bottom: 16px;
+            animation: bounce 3s infinite;
+        }
+
+        /* Estilos para la barra de navegación */
+        nav {
+            background-color: #00ced1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: #070606;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ff02ea;
+        }
+
+        /* Estilos adicionales para la lista de documentos */
+        ul.document-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li.document-item {
+            list-style: none;
+            display: inline-block;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        /* Estilos para el ícono del documento */
+        img.document-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Estilos para el enlace del documento */
+        a.document-link {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        /* Efecto de transición al pasar el ratón sobre el enlace o el ícono del documento */
+        a.document-link:hover,
+        img.document-icon:hover {
+            color: #ff02ea;
+            transform: scale(1.1);
+        }
+
+        /* Establece la disposición de los documentos en versión móvil */
+        @media (max-width: 768px) {
+            ul.document-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                padding: 0;
+            }
+
+            li.document-item {
+                flex-basis: calc(50% - 10px);
+                margin-bottom: 20px;
+            }
+
+            img.document-icon {
+                width: 20%;
+            }
+        }
+
+        /* Establece la disposición de los documentos en escritorio */
+        @media (min-width: 769px) {
+            ul.document-list {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: 0;
+            }
+
+            li.document-item {
+                flex-basis: calc(33.33% - 20px);
+                margin-bottom: 20px;
+            }
+
+            img.document-icon {
+                width: 20%;
+            }
+        }
+
+        /* Resaltado de las etiquetas span de la sección Mi ruta de aprendizaje */
+        .resaltado {
+            color: rgb(163, 87, 214);
+            font-size: 18px;
+        }
+
+        /* Estilos para el logo izquierdo */
+        #logo_izq {
+            position: fixed;
+            top: 10px;
+            left: 3px;
+            width: 30px;
+            height: auto;
+            z-index: 1000;
+            border-radius: 5px;
+        }
+
+        /* Estilos para el logo derecho */
+        #logo_der {
+            position: fixed;
+            top: 10px;
+            right: 3px;
+            width: 30px;
+            height: auto;
+            z-index: 1000;
+            border-radius: 5px;
+        }
+
+        /* Establece el tamaño para móvil (menos de 768px) */
+        @media (max-width: 768px) {
+            #logo_izq,
+            #logo_der {
+                width: 20px;
+            }
+        }
+
+        /* Establece el tamaño para escritorio (más de 768px) */
+        @media (min-width: 769px) {
+            #logo_izq,
+            #logo_der {
+                width: 40px;
+            }
+        }
+
+
+    </style>
+    
+</head>
+
+
+
+
+
+
+
+
+
+<body>
+
+    {% block content %}
+    {% csrf_token %}
+
+    <img id="logo_izq" src="{% static 'logo/Logo_simple.png' %}" alt="Logo">
+    <img id="logo_der" src="{% static 'logo/Logo_simple.png' %}" alt="Logo">
+
+  <div class="container">
+    <h1>Mis Documentos</h1>
+    <h3>Estas han sido mis guías en mi trayecto como desarrollador de software</h3>
+    <h6>Puedes descargar cada documento si así lo deseas</h6>
+
+
+    <ul class="document-list">
+      {% for documento in documentos %}
+        <li class="document-item">
+          {% if documento.tipo_documento == 'pdf' %}
+            <a href="{{ documento.archivo.url }}" download class="document-link">
+              <img src="{% static 'icons/pdf_icon.png' %}" alt="PDF Icon" class="document-icon">
+              <strong><br>{{ documento.nombre }}</strong>
+            </a>
+          {% elif documento.tipo_documento == 'word' %}
+            <a href="{{ documento.archivo.url }}" download class="document-link">
+              <img src="{% static 'icons/word_icon.png' %}" alt="Word Icon" class="document-icon">
+              <strong><br>{{ documento.nombre }}</strong>
+            </a>
+          {% elif documento.tipo_documento == 'excel' %}
+            <a href="{{ documento.archivo.url }}" download class="document-link">
+              <img src="{% static 'icons/excel_icon.png' %}" alt="Excel Icon" class="document-icon">
+              <strong><br>{{ documento.nombre }}</strong>
+            </a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+
+
+    <h1>Mi ruta de aprendizaje</h1>
+
+    <h4>• 2020-2022 (FCYT Uader) •</h4>
+    <p><span class="resaltado">C++</span> | <span class="resaltado">Cálculo Diferencial e Integral</span> | <span class="resaltado">Lógica y Álgebra</span> | <span class="resaltado">Sistemas y Organizaciones</span> | <span class="resaltado">Lecto-Comprensión en Inglés</span> | <span class="resaltado">Derechos Humanos y Tecnología</span> | <span class="resaltado">Fundamentos de Computación</span> </p>
+
+    <h4>• 2023 (de forma autodidacta) •</h4>
+    <p><span class="resaltado">Python</span> | <span class="resaltado">Django</span> | <span class="resaltado">HTML</span> | <span class="resaltado">CSS</span> | <span class="resaltado">JavaScript</span> | <span class="resaltado">Hosting</span> | <span class="resaltado">Manejo de archivos</span> | <span class="resaltado">Automatización de scripts</span> | <span class="resaltado">Programación Orientada a Objetos (POO)</span> </p>
+
+  </div>
+{% endblock %}
+</body>
+</html>
+
+

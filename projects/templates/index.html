@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <!-- Cargamos los archivos estáticos -->
+    {% load static %}
+    <!-- Con esto hacemos que la codificación sea universal y no nos genere errores con los caracteres -->
+    <meta charset="UTF-8">
+    <!-- Con esto hacemos que la web se adapte al tamaño de la pantalla del dispositivo con el que se ingresa -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título que se verá en la ventana del navegador -->
+    <title>Mi Portafolio | EmiSchonhals</title>
+    <!-- Enlace al favicon (icono de la pestaña del navegador) -->
+    <link rel="icon" href="{% static 'favicon\icono_navegador.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicon\icono_navegador.png' %}" type="image/x-icon">
+
+                                            <!-- SEO -->
+    <!-- Descripción que aparece abajo del título en las búsquedas en el navegador-->
+    <meta name="description" content="Portfolio de Emiliano Schonhals: Desarrollador Web Full Stack | Desarrollador de scripts en Python | Automatizaciones | Manejo de archivos">
+    
+    <style>
+
+        /* Estilos generales del cuerpo de la página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Estilos del encabezado principal */
+        h1 {
+            text-align: center;
+            color: rgb(17, 223, 205);
+            font-family: 'Copperplate Gothic', sans-serif;
+            margin-top: 50px;
+            font-size: 36px;
+        }
+
+        /* Estilos de las secciones del contenido */
+        section {
+            margin-bottom: 40px;
+        }
+
+        /* Estilos de los títulos de sección */
+        h2 {
+            color: #ff02ea;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* Estilos del subtítulo resaltado con animación */
+        h4 {
+            color: #e90606;
+            text-align: center;
+            animation: heartbeat 1.5s infinite; /* Aplica la animación llamada 'heartbeat' de forma infinita */
+        }
+
+        /* Estilos de los enlaces resaltados */
+        h5 {
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 8px;
+            color: #00ced1;
+            transition: color 0.3s ease;
+        }
+
+        /* Estilos del contenido dentro de enlaces y spans */
+        h5 span,
+        a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+        }
+
+        /* Estilos de animación al pasar el ratón sobre enlaces */
+        h5 a:hover,
+        h5 span:hover,
+        a.download-button:hover,
+        a.ver-proyectos:hover {
+            color: #ff02ea;
+            animation: shake 0.5s ease;
+        }
+
+        /* Estilos adicionales para el span dentro de h5 */
+        h5 span {
+            color: #00ced1;
+            font-size: 16px;
+        }
+
+        /* Estilos del párrafo h6 */
+        h6 {
+            color: #e0ffff;
+        }
+
+        /* Estilos generales del párrafo */
+        p {
+            color: #fff;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        /* Estilos de la lista no ordenada */
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Estilos de los elementos de la lista */
+        li {
+            color: #00ced1;
+            margin-bottom: 10px;
+            font-size: 19px;
+        }
+
+        /* Estilos de la sección del currículum vitae (CV) */
+        .cv-section {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Estilos de la imagen del CV */
+        .cv-image {
+            max-width: 90%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 25px rgb(17, 223, 205);
+        }
+
+        /* Estilos de los botones de descarga y ver proyectos */
+        a.download-button,
+        a.ver-proyectos {
+            display: inline-block;
+            background-color: #00ced1;
+            color: #0a0909;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 20px;
+            margin-top: 10px;
+            transition: color 0.3s ease;
+        }
+
+        /* Estilos responsivos para párrafos en dispositivos móviles */
+        @media (max-width: 768px) {
+            p {
+                font-size: 16px;
+            }
+
+            /* Estilos para la imagen del logo en dispositivos móviles */
+            .logo-container img {
+                width: 250px;
+                max-width: 97%;
+            }
+        }
+
+        /* Animación de sacudida */
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25%, 75% {
+                transform: translateX(-5px);
+            }
+            50% {
+                transform: translateX(5px);
+            }
+        }
+
+        /* Animación de rebote */
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-13px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* Animación de latido */
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1); /* Escala inicial */
+            }
+            50% {
+                transform: scale(1.05); /* Escala a la mitad del tiempo de la animación */
+            }
+            100% {
+                transform: scale(1); /* Vuelve a la escala original al final de la animación */
+            }
+        }
+
+        /* Estilos de la lista de tecnologías */
+        ul.technologies {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        /* Estilos de los elementos de la lista de tecnologías con animación */
+        ul.technologies li {
+            margin-right: 18px;
+            margin-bottom: 15px;
+            animation: bounce 3s infinite;
+        }
+
+        /* Estilo para la barra de navegación */
+        nav {
+            background-color: #00ced1;
+            padding: 10px;
+            text-align: center;
+        }
+
+        /* Estilos de los enlaces de navegación */
+        nav a {
+            color: #070606;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Estilos de los enlaces de navegación al pasar el ratón sobre ellos */
+        nav a:hover {
+            color: #ff02ea;
+        }
+
+        /* Estilos del contenedor principal */
+        .container {
+            /* Estilos del contenedor principal */
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            overflow: hidden;
+        }
+
+        /* Estilos de la sección de datos de contacto */
+        .contacto-section {
+            width: 56%;
+            float: left;
+        }
+
+        /* Estilos del contenedor del logo */
+        .logo-container {
+            width: 44%;
+            float: right;
+            text-align: right;
+            margin-top: 30px;
+        }
+
+        /* Estilos de la imagen del logo por defecto */
+        .logo-container img {
+            width: 310px;
+            height: auto;
+            box-shadow: 0 0 9px rgb(17, 223, 205);
+            transition: transform 0.3s ease-in-out;
+            max-width: 270px;
+        }
+
+        /* Estilos responsivos para la imagen del logo en dispositivos móviles */
+        @media (max-width: 768px) {
+            .logo-container img {
+                width: 450px; /* Ajusta el tamaño según tus necesidades */
+                height: 250px;
+            }
+        }
+
+        /* Estilos de la sección de Mis Proyectos */
+        .proyectos-section {
+            clear: both;
+            margin-top: 20px;
+        }
+
+        /* Estilos de la sección Mis Proyectos en dispositivos móviles */
+        #mis-proyectos {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+        }
+
+        /* Estilos de resaltado para las etiquetas span en la sección Quien Soy */
+        .resaltado {
+            color: #00ced1; 
+            font-size: 16px;
+        }
+
+        /* para que las etiquetas span de datos de contacto no se iluminen ni cambie el cursor al pasar sobre ellas */
+        #datos-contacto h5 span {
+            cursor: inherit; /* Hereda el cursor del elemento padre */
+        }
+
+        #datos-contacto h5 span {
+            color: inherit; /* Hereda el color del texto de su elemento padre */
+        }
+
+        #datos-contacto h5 span:hover {
+            color: inherit; /* No cambia de color al pasar el ratón sobre él */
+        }
+
+
+    </style>
+</head>
+
+
+
+
+
+
+<body>
+    <!-- Barra de navegación -->
+    <nav>
+        <a href="#quien-soy">Quién Soy</a>  |
+        <a href="#datos-contacto">Datos de Contacto</a>  |
+        <a href="#mis-proyectos">Mis Proyectos</a>  |
+        <a href="#mis-documentos">Mi Aprendizaje</a>  |
+        <a href="#habilidades-tecnicas">Habilidades Técnicas</a>  |
+        <a href="#habilidades-blandas">Habilidades Blandas</a>  |
+        <a href="#tecnologias">Tecnologías</a>  |
+        <a href="#mi-cv">Mi CV</a>
+    </nav>
+
+    <div class="container">
+        <h1>Bienvenido a Mi Portfolio</h1>
+
+        <section id="quien-soy">
+            <h2> 🙾 Quién Soy 🙿</h2>
+            <!-- las etiquetas span permiten que lo que esté en ellas este resaltado como querramos, en este caso en color celeste, y las etiquetas strong sirven para poner en negrita-->
+            <p>Mi nombre es  <strong><span class="resaltado">Emiliano Schonhals</span></strong>, soy un aplicado y creativo <strong><span class="resaltado">desarrollador web</span></strong>, además de tener experiencia en otros sectores del desarrollo de software. Te doy la bienvenida a mi portafolio, aquí encontrarás una muestra de mis proyectos y habilidades. Explora y no dudes en contactarme para colaboraciones o más información.</p>
+            <h4>----> Actualmente estoy buscando oportunidades laborales y proyectos <----</h4>
+        </section>
+
+        <section id="datos-contacto" class="contacto-section">
+            <h2> 🙾 Datos de contacto 🙿 </h2>
+            <h5><span>Teléfono:</span> <a href="tel:+5493434258024">+54 9 343 425-8024</a> ✆</h5>
+            <h5><span>Email:</span> <a href="mailto:emischonhals@gmail.com">emischonhals@gmail.com</a> 🖅</h5>
+            <h5><span>LinkedIn:</span> <a href="https://www.linkedin.com/in/emilianoschonhals" target="_blank">Emiliano Schonhals</a> in</h5>
+            <h5><span>GitHub:</span> <a href="https://github.com/EmiSchonhals1" target="_blank">EmiSchonhals1</a> 🗁</h5>
+            <h5><span>Instagram:</span> <a href="https://www.instagram.com/emischonhals/" target="_blank">emischonhals</a> ig</h5>
+        </section>
+
+        <!-- Mi logo -->
+        <div class="logo-container">
+            <img src="{% static 'logo/Mi_logo.png' %}" alt="Mi Logo">
+        </div>
+
+        <section id="mis-proyectos" class="proyectos-section">
+            <h2> 🙾 Mis Proyectos 🙿 </h2>
+            <p>Explora algunos de los proyectos en los que he trabajado.</p>
+            <a href="portfolio" class="ver-proyectos"><strong><span>Ver Proyectos</span></strong></a>
+        </section>
+
+        <section id="mis-documentos">
+            <h2> 🙾 Mi Aprendizaje 🙿 </h2>
+            <strong><p>¿Quieres conocer como he llegado hasta aquí?</p></strong>
+            <p>Explora los documentos que he escrito a través de mi trayectoria en el ámbito IT y conoce un poco más sobre mi ruta de aprendizaje</p>
+            <p>Puedes descargar los mismos para poder aprovechar la información que poseen</p>
+            <a href="{% url 'aprendizaje' %}" class="ver-proyectos">
+                <strong><span>Ver Documentos</span></strong>
+            </a>
+        </section>
+
+        <section id="habilidades-tecnicas">
+            <h2> 🙾 Habilidades Técnicas 🙿 </h2>
+            <ul>
+                <li>☑ Desarrollo Web Fullstack</li>
+                <li>☑ Desarrollo de scripts en Python</li>
+                <li>☑ Automatizaciones de procesos y archivos Excel</li>
+                <li>☑ Manejo de archivos txt, csv y xlsx</li>
+            </ul>
+        </section>
+
+        <section id="habilidades-blandas">
+            <h2> 🙾 Habilidades Blandas 🙿 </h2>
+            <ul>
+                <li>• Profesionalismo</li>
+                <p>Mi mentalidad es proactiva y enfocada siempre hacia la calidad, sin temor de asumir responsabilidades o liderar iniciativas para demostrar mi compromiso y capacidad profesional</p>
+
+                <li>• Adaptabilidad</li>
+                <p>Tengo una rápida capacidad de aprendizaje y adaptación a nuevas tecnologías y herramientas según las demandas del proyecto</p>
+                <p>Tengo experiencia trabajando en diversos proyectos que requieren la adaptación a diferentes entornos tecnológicos y metodologías de desarrollo</p>
+
+                <li>• Colaboración y trabajo en equipo</li>
+                <p>Participo de forma activa y eficiente, contribuyendo a un ambiente laboral y profesional positivo y obteniendo de esa forma una resolución en conjunto de cualquier problemática o desafío que surja</p>
+
+                <li>• Pensamiento analítico y resolución de problemas</li>
+                <p>Poseo un enfoque lógico y una mentalidad proactiva en la búsqueda de soluciones efectivas</p>
+
+                <li>• Gestión del tiempo</li>
+                <p>Poseo un alto compromiso con los plazos estipulados debido a mi capacidad de priorizar tareas, maximizando de esa forma la productividad</p>
+
+                <li>• Empatía</li>
+                <p>Comprendo las necesidades y expectativas del usuario final, siempre priorizando la experiencia del mismo en el desarrollo de soluciones y proyectos</p>
+
+                <li>• Pasión por los nuevos conocimientos</li>
+                <p>Estoy en la búsqueda constante de aprendizaje y autosuperación diaria</p>
+
+
+            </ul>
+        </section>
+
+        <section id="tecnologias">
+            <h2> 🙾 Tecnologías 🙿 </h2>
+            <ul class="technologies">
+                <li>Python</li>
+                <li>Django</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>pandas</li>
+                <li>openpyxl</li>
+                <li>PyInstaller</li>
+            </ul>
+        </section>
+
+        <section class="cv-section" id="mi-cv">
+            <h2> 🙾 Mi CV 🙿 </h2>
+            <!-- Ajusta la ruta de la imagen del CV según tu estructura de archivos Django -->
+            <img src="{% static 'cv\cv_EmilianoSchonhals.png' %}" alt="Mi CV" class="cv-image">
+            <!-- Ajusta la ruta del enlace de descarga según tu estructura de archivos Django -->
+            <a href="{% static 'cv\cv_EmilianoSchonhals.png' %}" download class="download-button"><strong>⤓ Descargar CV ⤓</strong></a>
+        </section>
+    </div>
+
+
+</body>
+</html>

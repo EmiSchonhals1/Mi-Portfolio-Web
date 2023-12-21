@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+    <title>Proyectos | EmiSchonhals</title>
+
+    <!-- Enlace al favicon (icono de la pestaña del navegador) -->
+    <link rel="icon" href="{% static 'favicon\icono_navegador.png' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'favicon\icono_navegador.png' %}" type="image/x-icon">
+
+    <style>
+        /* Estilos generales del cuerpo de la página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #000000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos del encabezado principal */
+h1 {
+    text-align: center;
+    color: rgb(17, 223, 205);
+    font-family: 'Copperplate Gothic', sans-serif; /* Fuente Copperplate Gothic */
+    margin-top: 50px;
+    font-size: 36px;
+}
+
+/* Estilos de la lista de proyectos */
+ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+/* Estilos de cada proyecto en la lista */
+li {
+    background-color: #000000;
+    margin: 10px;
+    padding: 15px;
+    box-shadow: 0 0 12px rgb(17, 223, 205);
+    transition: transform 0.3s ease-in-out;
+    max-width: 300px;
+}
+
+/* Efecto de escala al pasar el ratón sobre cada proyecto */
+li:hover {
+    transform: scale(1.1);
+}
+
+/* Estilos del título del proyecto */
+h2 {
+    font-family: 'Consolas', monospace; /* Fuente Consolas */
+    color: #ff02ea;
+    margin-bottom: 10px;
+}
+
+/* Estilos de las imágenes de los proyectos */
+img {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* Estilos del texto y enlaces dentro de los proyectos */
+p, a {
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Optima', sans-serif; /* Fuente Optima */
+}
+
+/* Estilos del texto en negrita dentro de los proyectos */
+p strong {
+    font-family: 'Monaco', monospace; /* Fuente Monaco */
+    font-weight: normal;
+    color: #d869cf;
+}
+
+/* Estilos de los enlaces en la sección de URL */
+p.url a {
+    color: rgb(17, 223, 205); 
+}
+
+/* Estilos de la sección de URL con texto truncado */
+p.url {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+/* Estilos responsivos para proyectos en dispositivos móviles */
+@media (max-width: 780px) {
+    li {
+        flex-basis: calc(50% - 20px);
+    }
+}
+
+/* Estilos para el logo izquierdo */
+#logo_izq {
+    position: fixed;
+    top: 10px;
+    left: 3px;
+    width: 30px; /* Puedes ajustar el tamaño según tus necesidades */
+    height: auto;
+    z-index: 1000;
+    border-radius: 5px;
+}
+
+/* Estilos para el logo derecho */
+#logo_der {
+    position: fixed;
+    top: 10px;
+    right: 3px;
+    width: 30px; /* Puedes ajustar el tamaño según tus necesidades */
+    height: auto;
+    z-index: 1000;
+    border-radius: 5px;
+}
+
+/* Establece el tamaño para móvil (menos de 768px) */
+@media (max-width: 768px) {
+    #logo_izq,
+    #logo_der {
+        width: 20px;
+    }
+}
+
+/* Establece el tamaño para escritorio (más de 768px) */
+@media (min-width: 769px) {
+    #logo_izq,
+    #logo_der {
+        width: 40px;
+    }
+}
+
+
+    </style>
+</head>
+<body>
+
+    <img id="logo_izq" src="{% static 'logo/Logo_simple.png' %}" alt="Logo">
+    <img id="logo_der" src="{% static 'logo/Logo_simple.png' %}" alt="Logo">
+
+
+    <h1>Mis Proyectos</h1>
+    <ul>
+        {% for project in projects %}
+            <li>
+                <h2>«{{ project.title }}»</h2>
+                {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                {% endif %}
+                {% if project.url %}
+                    <p class="url"><strong>⤷URL:</strong> <a href="{{ project.url }}" target="_blank">{{ project.url }}</a></p>
+                {% else %}
+                    <p class="url"><strong>⤷URL:</strong> Sin URL proporcionada</p>
+                {% endif %}
+                <p class="descripcion"><strong>⤷Descripción:</strong> {{ project.description }}</p>
+                <p class="tecnologias"><strong>⤷Tecnologías:</strong> {{ project.technologies }}</p>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+
+
