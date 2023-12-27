@@ -1,9 +1,9 @@
 [build]
-  command = "python manage.py collectstatic --noinput"
-  functions = "C:\Users\ASUS\OneDrive\Escritorio\Mi portfolio web\myportfolio/lambda"
+  command = "python manage.py migrate"
+  publish = "C:/Users/ASUS/OneDrive/Escritorio/Mi portfolio web/myportfolio"
 
 [context.production]
   command = "python manage.py migrate"
 
 [context.deploy-preview]
-  command = "python manage.py migrate"
+  command = "python manage.py migrate" 
