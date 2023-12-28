@@ -2,7 +2,7 @@ version: 1
 services:
   - name: web
     buildCommand: python -m pip install -r requirements.txt
-    startCommand: ./venv/bin/gunicorn myportfolio.wsgi -w 4 -k uvicorn.workers.UvicornWorker
+    startCommand: gunicorn myportfolio.wsgi:application -w 4 -k uvicorn.workers.UvicornWorker
     env:
       - key: DJANGO_SECRET_KEY
         generate: true
