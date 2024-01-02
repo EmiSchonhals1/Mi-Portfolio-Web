@@ -6,3 +6,6 @@ services:
     env:
       - key: DJANGO_SECRET_KEY
         generate: true
+    
+    middleware:
+  - uvicorn.middleware.UvicornH11ClientDisconnect
