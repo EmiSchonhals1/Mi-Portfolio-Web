@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "myportfolio"
+version = "0.1.0"
+description = "mi portfolio web"
+authors = ["Emiliano Schonhals"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+asgiref = {version = "3.7.2", allow-prereleases = true}
+brotli = {version = "1.1.0", allow-prereleases = true}
+click = {version = "8.1.7", allow-prereleases = true}
+colorama = {version = "0.4.6", allow-prereleases = true}
+dj-database-url = {version = "2.1.0", allow-prereleases = true}
+django = {version = "5.0", allow-prereleases = true}
+gunicorn = {version = "21.2.0", allow-prereleases = true}
+h11 = {version = "0.14.0", allow-prereleases = true}
+numpy = {version = "1.26.2", allow-prereleases = true}
+packaging = {version = "23.2", allow-prereleases = true}
+pandas = {version = "2.1.3", allow-prereleases = true}
+pillow = {version = "10.2.0", allow-prereleases = true}
+psycopg2-binary = {version = "2.9.9", allow-prereleases = true}
+python-dateutil = {version = "2.8.2", allow-prereleases = true}
+pytz = {version = "2023.3.post1", allow-prereleases = true}
+six = {version = "1.16.0", allow-prereleases = true}
+sqlparse = {version = "0.4.4", allow-prereleases = true}
+typing-extensions = {version = "4.9.0", allow-prereleases = true}
+tzdata = {version = "2023.3", allow-prereleases = true}
+uvicorn = {version = "0.15.0", allow-prereleases = true}
+whitenoise = {version = "6.6.0", allow-prereleases = true}
+
+
+[tool.poetry.group.dev.dependencies]
+daphne = "^4.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
