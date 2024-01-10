@@ -342,14 +342,14 @@
 <body>
     <!-- Barra de navegación -->
     <nav>
-        <a href="#quien-soy">Quién Soy</a>  |
-        <a href="#datos-contacto">Datos de Contacto</a>  |
-        <a href="#mis-proyectos">Mis Proyectos</a>  |
-        <a href="#mis-documentos">Mi Aprendizaje</a>  |
-        <a href="#habilidades-tecnicas">Habilidades Técnicas</a>  |
-        <a href="#habilidades-blandas">Habilidades Blandas</a>  |
-        <a href="#tecnologias">Tecnologías</a>  |
-        <a href="#mi-cv">Mi CV</a>
+        <a class="scroll-section" href="#quien-soy">Quién Soy</a>  |
+        <a class="scroll-section" href="#datos-contacto">Datos de Contacto</a>  |
+        <a href="{% url 'portfolio' %}">Mis Proyectos</a>  |
+        <a href="{% url 'aprendizaje' %}">Mi Aprendizaje</a>  |
+        <a class="scroll-section" href="#habilidades-tecnicas">Habilidades Técnicas</a>  |
+        <a class="scroll-section" href="#habilidades-blandas">Habilidades Blandas</a>  |
+        <a class="scroll-section" href="#tecnologias">Tecnologías</a>  |
+        <a class="scroll-section" href="#mi-cv">Mi CV</a>
     </nav>
 
 
@@ -471,27 +471,33 @@
     });
     </script>
 
-<!-- Animación de JS para la barra de navegación -->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
-        var nav = document.querySelector("nav");
         var navLinks = document.querySelectorAll("nav a");
 
-        var originalLinkColors = Array.from(navLinks).map(link => link.style.color);
+        navLinks.forEach(function(link) {
+            link.addEventListener("click", function(event) {
+                event.preventDefault();
 
-        window.addEventListener("scroll", function() {
-            var isPinkBackground = window.scrollY > 50;
+                // Verificamos si el enlace tiene la clase para desplazamiento suave
+                if (this.classList.contains("scroll-section")) {
+                    // Si tiene la clase, realiza el desplazamiento suave
+                    var targetSectionId = this.getAttribute("href").substring(1);
+                    var targetSection = document.getElementById(targetSectionId);
 
-            nav.style.backgroundColor = isPinkBackground ? "#ff02ea" : "rgba(0, 206, 209, 1)";
-            nav.style.color = isPinkBackground ? "#00ced1" : "#070606";
+                    if (targetSection) {
+                        var offset = 60; // Ajuste de desplazamiento
+                        var targetOffset = targetSection.offsetTop - offset;
 
-            navLinks.forEach(function(link, index) {
-                link.addEventListener("mouseover", function() {
-                    this.style.color = isPinkBackground ? "#00ced1" : "#ff02ea";
-                });
-                link.addEventListener("mouseout", function() {
-                    this.style.color = originalLinkColors[index];
-                });
+                        window.scrollTo({
+                            top: targetOffset,
+                            behavior: "smooth"
+                        });
+                    }
+                } else {
+                    // Si no tiene la clase, redirige a esa URL
+                    window.location.href = this.getAttribute("href");
+                }
             });
         });
     });
