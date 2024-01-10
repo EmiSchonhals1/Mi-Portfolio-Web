@@ -6,14 +6,14 @@ authors = ["Emiliano Schonhals"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = "^3.12"
-asgiref = {version = "3.7.2", allow-prereleases = true}
+python = "^3.8"
+asgiref = {version = "3.3", allow-prereleases = true}
 brotli = {version = "1.1.0", allow-prereleases = true}
 click = {version = "8.1.7", allow-prereleases = true}
 colorama = {version = "0.4.6", allow-prereleases = true}
 dj-database-url = {version = "2.1.0", allow-prereleases = true}
-django = {version = "5.0", allow-prereleases = true}
-gunicorn = {version = "21.2.0", allow-prereleases = true}
+django = {version = "3.2", allow-prereleases = true}
+gunicorn = {version = "20.1", allow-prereleases = true}
 h11 = {version = "0.14.0", allow-prereleases = true}
 numpy = {version = "1.26.2", allow-prereleases = true}
 packaging = {version = "23.2", allow-prereleases = true}
@@ -26,8 +26,12 @@ six = {version = "1.16.0", allow-prereleases = true}
 sqlparse = {version = "0.4.4", allow-prereleases = true}
 typing-extensions = {version = "4.9.0", allow-prereleases = true}
 tzdata = {version = "2023.3", allow-prereleases = true}
-uvicorn = {version = "0.15.0", allow-prereleases = true}
-whitenoise = {version = "6.6.0", allow-prereleases = true}
+uvicorn = {version = "0.15", allow-prereleases = true}
+whitenoise = {version = "6.0", allow-prereleases = true}
+daphne = "^3.1.1"
+
+[tool.poetry.scripts]
+start = "myportfolio.asgi:application"
 
 
 [tool.poetry.group.dev.dependencies]

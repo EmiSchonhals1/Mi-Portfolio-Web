@@ -21,7 +21,7 @@
 
         /* Estilos generales del cuerpo de la página */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; /*en el caso de que el sistema del usuario no pueda cargar la primera fuente se pasará a la siguiente y así hasta llegar a la última que es soportada por todos los sistemas operativos*/
             background-color: #000000;
             color: #fff;
             margin: 0;
@@ -40,7 +40,7 @@
 
         /* Estilos de las secciones del contenido */
         section {
-            margin-bottom: 40px;
+            margin-bottom: 35px;
         }
 
         /* Estilos de los títulos de sección */
@@ -217,7 +217,12 @@
             background-color: #00ced1;
             padding: 10px;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100; /* Asegura que la barra de navegación esté sobre otros elementos */
+            transition: background-color 0.3s ease; /* Agregamos transición para un cambio suave de color */
         }
+
 
         /* Estilos de los enlaces de navegación */
         nav a {
@@ -262,12 +267,15 @@
             box-shadow: 0 0 9px rgb(17, 223, 205);
             transition: transform 0.3s ease-in-out;
             max-width: 270px;
+            position: relative;
         }
+
+
 
         /* Estilos responsivos para la imagen del logo en dispositivos móviles */
         @media (max-width: 768px) {
             .logo-container img {
-                width: 450px; /* Ajusta el tamaño según tus necesidades */
+                width: 450px; 
                 height: 250px;
             }
         }
@@ -305,6 +313,23 @@
             color: inherit; /* No cambia de color al pasar el ratón sobre él */
         }
 
+        .barra_progreso {
+            position: fixed;
+            width: 1em;
+            background: #ff02ea;
+            height: 0;
+            transition: height 0.5s ease;
+        }
+
+        #barra_izquierda {
+            left: 0;
+        }
+
+        #barra_derecha {
+            right: 0;
+        }
+
+
 
     </style>
 </head>
@@ -326,6 +351,10 @@
         <a href="#tecnologias">Tecnologías</a>  |
         <a href="#mi-cv">Mi CV</a>
     </nav>
+
+
+    <div id="barra_izquierda" class="barra_progreso"></div>
+    <div id="barra_derecha" class="barra_progreso"></div>
 
     <div class="container">
         <h1>Bienvenido a Mi Portfolio</h1>
@@ -429,6 +458,59 @@
         </section>
     </div>
 
+
+    <!--animación de JavaScript para la barra de progreso-->
+    <script>
+        window.addEventListener('scroll', function () {
+        var scroll = document.documentElement.scrollTop || document.body.scrollTop;
+        var windowHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = (scroll / windowHeight) * 100;
+
+        document.getElementById('barra_izquierda').style.height = progress + '%';
+        document.getElementById('barra_derecha').style.height = progress + '%';
+    });
+    </script>
+
+    <!--animación de JS para la barra de navegación-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        var nav = document.querySelector("nav");
+    
+        window.addEventListener("scroll", function() {
+            if (window.scrollY > 50) {
+                nav.style.backgroundColor = "#ff02ea"; /* Cambia el fondo a rosado */
+                nav.style.color = "#00ced1";
+            } else {
+                nav.style.backgroundColor = "rgba(0, 206, 209, 1)"; /* Vuelve al fondo inicial */
+            }
+        });
+    });
+    </script>
+    
+    <!--animación de JS para la barra de navegación en la que hace que al clickear un elemento de la barra nos genere un espacio por encima del mismo asi la barra no tapa los titulos de las secciones-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    var navLinks = document.querySelectorAll("nav a");
+
+    navLinks.forEach(function(link) {
+        link.addEventListener("click", function(event) {
+            event.preventDefault();
+            var targetSectionId = this.getAttribute("href").substring(1);
+            var targetSection = document.getElementById(targetSectionId);
+
+            if (targetSection) {
+                var offset = 60; // Ajuste de desplazamiento
+                var targetOffset = targetSection.offsetTop - offset;
+
+                window.scrollTo({
+                    top: targetOffset,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+});
+    </script>
 
 </body>
 </html>
