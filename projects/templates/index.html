@@ -342,6 +342,7 @@
 <body>
     <!-- Barra de navegación -->
     <nav>
+        <!--Los enlaces con la clase scroll-section nos enviarán a sus respectivas secciones y los que no poseen esa clase nos enviarán a sus respectivas urls-->
         <a class="scroll-section" href="#quien-soy">Quién Soy</a>  |
         <a class="scroll-section" href="#datos-contacto">Datos de Contacto</a>  |
         <a href="{% url 'portfolio' %}">Mis Proyectos</a>  |
@@ -362,7 +363,9 @@
         <section id="quien-soy">
             <h2> 🙾 Quién Soy 🙿</h2>
             <!-- las etiquetas span permiten que lo que esté en ellas este resaltado como querramos, en este caso en color celeste, y las etiquetas strong sirven para poner en negrita-->
-            <p>Mi nombre es  <strong><span class="resaltado">Emiliano Schonhals</span></strong>, soy un aplicado y creativo <strong><span class="resaltado">desarrollador web</span></strong>, además de tener experiencia en otros sectores del desarrollo de software. Te doy la bienvenida a mi portafolio, aquí encontrarás una muestra de mis proyectos y habilidades. Explora y no dudes en contactarme para colaboraciones o más información.</p>
+            <p>Soy  <strong><span class="resaltado">Emiliano Schonhals</span></strong>, un aplicado y creativo <strong><span class="resaltado">desarrollador web</span></strong>. </p> 
+            <p>Además de eso tengo experiencia en otros sectores del desarrollo de software.</p>
+            <p> Te doy la bienvenida a mi portafolio, aquí encontrarás una muestra de mis proyectos y habilidades. Explora y no dudes en contactarme para colaboraciones o más información.</p>
             <h4>----> Actualmente estoy buscando oportunidades laborales y proyectos <----</h4>
         </section>
 
@@ -471,6 +474,33 @@
     });
     </script>
 
+<!-- Animación de JS para la barra de navegación en la que se asegura que el color de fuentes y el fondo sean distintos una vez realizada la animacion -->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var nav = document.querySelector("nav");
+        var navLinks = document.querySelectorAll("nav a");
+
+        var originalLinkColors = Array.from(navLinks).map(link => link.style.color);
+
+        window.addEventListener("scroll", function () {
+            var isPinkBackground = window.scrollY > 50;
+
+            nav.style.backgroundColor = isPinkBackground ? "#ff02ea" : "rgba(0, 206, 209, 1)";
+            nav.style.color = isPinkBackground ? "#00ced1" : "#070606";
+
+            navLinks.forEach(function (link, index) {
+                link.addEventListener("mouseover", function () {
+                    this.style.color = isPinkBackground ? "#00ced1" : "#ff02ea";
+                });
+                link.addEventListener("mouseout", function () {
+                    this.style.color = originalLinkColors[index];
+                });
+            });
+        });
+    });
+</script>
+
+<!--verifica si el enlace de la barra de navegacion nos enviara a una seccion o a una url-->
 <script>
     document.addEventListener("DOMContentLoaded", function() {
         var navLinks = document.querySelectorAll("nav a");
