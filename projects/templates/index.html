@@ -32,7 +32,7 @@
         /* Estilos del encabezado principal */
         h1 {
             text-align: center;
-            color: rgb(17, 223, 205);
+            color: #11dfcd;
             font-family: 'Copperplate Gothic', sans-serif;
             margin-top: 50px;
             font-size: 36px;
@@ -471,21 +471,31 @@
     });
     </script>
 
-    <!--animación de JS para la barra de navegación-->
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
+<!-- Animación de JS para la barra de navegación -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
         var nav = document.querySelector("nav");
-    
+        var navLinks = document.querySelectorAll("nav a");
+
+        var originalLinkColors = Array.from(navLinks).map(link => link.style.color);
+
         window.addEventListener("scroll", function() {
-            if (window.scrollY > 50) {
-                nav.style.backgroundColor = "#ff02ea"; /* Cambia el fondo a rosado */
-                nav.style.color = "#00ced1";
-            } else {
-                nav.style.backgroundColor = "rgba(0, 206, 209, 1)"; /* Vuelve al fondo inicial */
-            }
+            var isPinkBackground = window.scrollY > 50;
+
+            nav.style.backgroundColor = isPinkBackground ? "#ff02ea" : "rgba(0, 206, 209, 1)";
+            nav.style.color = isPinkBackground ? "#00ced1" : "#070606";
+
+            navLinks.forEach(function(link, index) {
+                link.addEventListener("mouseover", function() {
+                    this.style.color = isPinkBackground ? "#00ced1" : "#ff02ea";
+                });
+                link.addEventListener("mouseout", function() {
+                    this.style.color = originalLinkColors[index];
+                });
+            });
         });
     });
-    </script>
+</script>
     
     <!--animación de JS para la barra de navegación en la que hace que al clickear un elemento de la barra nos genere un espacio por encima del mismo asi la barra no tapa los titulos de las secciones-->
     <script>
