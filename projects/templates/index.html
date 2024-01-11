@@ -208,8 +208,9 @@
         /* Estilos de los elementos de la lista de tecnologías con animación */
         ul.technologies li {
             margin-right: 18px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             animation: bounce 3s infinite;
+            margin: 12px;
         }
 
         /* Estilo para la barra de navegación */
@@ -246,27 +247,64 @@
             overflow: hidden;
         }
 
-        /* Estilos de la sección de datos de contacto */
+     /* Estilos para la sección de datos de contacto */
         .contacto-section {
-            width: 56%;
-            float: left;
+            text-align: left;
         }
 
+        /* Estilos para el título h2 en la sección de datos de contacto */
+        .contacto-section h2 {
+            text-align: left;
+        }
+
+        /* Estilos para los iconos en la sección de datos de contacto */
+.contacto-section .contact-icons {
+    display: flex; /* Muestra los iconos en línea */
+    justify-content: center; /* Alinea los iconos al centro horizontalmente */
+    align-items: center; /* Alinea los iconos al centro verticalmente */
+    flex-wrap: wrap; /* Permite que los iconos se envuelvan a una nueva línea si no hay suficiente espacio */
+    margin-top: 10px; /* Espacio entre el h2 y los iconos */
+}
+
+/* Estilos para cada icono */
+.contacto-section .contact-icon {
+    width: 60px; /* Tamaño de los iconos */
+    height: auto;
+    margin: 0 90px; /* Espacio entre los iconos */
+    flex-shrink: 0; /* Evita que los iconos se reduzcan más allá de su tamaño original */
+}
+
+/* Estilos para cada icono en desktop */
+.contacto-section .contact-icon {
+    width: 60px; /* Tamaño de los iconos en desktop */
+    height: auto;
+    margin: 0 90px; /* Espacio entre los iconos en desktop */
+    flex-shrink: 0; /* Evita que los iconos se reduzcan más allá de su tamaño original en desktop */
+}
+
+/* Consulta de medios para dispositivos móviles */
+@media (max-width: 768px) {
+    /* Estilos para cada icono en dispositivos móviles */
+    .contacto-section .contact-icon {
+        width: 15%; /* Tamaño de los iconos en mobile (50% para 2x2) */
+        margin: 70px; /* Espacio entre los iconos en mobile */
+        align-items: center;
+    }
+}
         /* Estilos del contenedor del logo */
         .logo-container {
-            width: 44%;
-            float: right;
-            text-align: right;
+            width: 100%; /* Ajusta según sea necesario */
+            text-align: center; /* Cambia a "right" para que el logo esté a la derecha */
             margin-top: 30px;
         }
 
         /* Estilos de la imagen del logo por defecto */
         .logo-container img {
-            width: 310px;
+            width: 100%; /* Ajusta según sea necesario */
             height: auto;
             box-shadow: 0 0 9px rgb(17, 223, 205);
             transition: transform 0.3s ease-in-out;
-            max-width: 270px;
+            max-width: 270px; /* Ajusta según sea necesario */
             position: relative;
         }
 
@@ -360,6 +398,11 @@
     <div class="container">
         <h1>Bienvenido a Mi Portfolio</h1>
 
+        <!-- Mi logo -->
+        <div class="logo-container">
+            <img src="{% static 'logo/Mi_logo.png' %}" alt="Mi Logo">
+        </div>
+
         <section id="quien-soy">
             <h2> 🙾 Quién Soy 🙿</h2>
             <!-- las etiquetas span permiten que lo que esté en ellas este resaltado como querramos, en este caso en color celeste, y las etiquetas strong sirven para poner en negrita-->
@@ -370,18 +413,23 @@
         </section>
 
         <section id="datos-contacto" class="contacto-section">
-            <h2> 🙾 Datos de contacto 🙿 </h2>
+            <!-- <h2> 🙾 Datos de contacto 🙿 </h2>
+
             <h5><span>Teléfono:</span> <a href="tel:+5493434258024">+54 9 343 425-8024</a> ✆</h5>
             <h5><span>Email:</span> <a href="mailto:emischonhals@gmail.com">emischonhals@gmail.com</a> 🖅</h5>
             <h5><span>LinkedIn:</span> <a href="https://www.linkedin.com/in/emilianoschonhals" target="_blank">Emiliano Schonhals</a> in</h5>
             <h5><span>GitHub:</span> <a href="https://github.com/EmiSchonhals1" target="_blank">EmiSchonhals1</a> 🗁</h5>
-            <h5><span>Instagram:</span> <a href="https://www.instagram.com/emischonhals/" target="_blank">emischonhals</a> ig</h5>
+            <h5><span>Instagram:</span> <a href="https://www.instagram.com/emischonhals/" target="_blank">emischonhals</a> ig</h5> -->
+
+            <!--redireccionamiento con íconos-->
+            <a href="tel:+5493434258024" title="Teléfono"><img src="{% static 'icons/whatsapp.png' %}" alt="Teléfono" class="contact-icon"></a>
+            <a href="mailto:emischonhals@gmail.com" title="Email"><img src="{% static 'icons/email.png' %}" alt="Email" class="contact-icon"></a>
+            <a href="https://www.linkedin.com/in/emilianoschonhals" target="_blank" title="LinkedIn"><img src="{% static 'icons/linkedin.png' %}" alt="LinkedIn" class="contact-icon"></a>
+            <a href="https://github.com/EmiSchonhals1" target="_blank" title="GitHub"><img src="{% static 'icons/github.png' %}" alt="GitHub" class="contact-icon"></a>
+            <!-- <a href="https://www.instagram.com/emischonhals/" target="_blank" title="Instagram"><img src="{% static 'icons/instagram.png' %}" alt="Instagram" class="contact-icon"></a> -->
         </section>
 
-        <!-- Mi logo -->
-        <div class="logo-container">
-            <img src="{% static 'logo/Mi_logo.png' %}" alt="Mi Logo">
-        </div>
+       
 
         <section id="mis-proyectos" class="proyectos-section">
             <h2> 🙾 Mis Proyectos 🙿 </h2>
@@ -446,9 +494,9 @@
                 <li>HTML</li>
                 <li>CSS</li>
                 <li>JavaScript</li>
-                <li>pandas</li>
-                <li>openpyxl</li>
-                <li>PyInstaller</li>
+                <li>Pandas</li>
+                <li>Git</li>
+                <li>GitHub</li>
             </ul>
         </section>
 

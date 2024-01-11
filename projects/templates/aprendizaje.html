@@ -204,14 +204,23 @@
             text-align: center;
         }
 
-        /* Estilos para el ícono del documento */
-        img.document-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            transition: transform 0.3s ease;
-        }
+        /* Estilos para el ícono del documento en formato desktop */
+img.document-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: transform 0.3s ease;
+}
+
+/* Estilos para el ícono del documento en formato mobile */
+@media (max-width: 768px) {
+    img.document-icon {
+        width: 50px; /* Ajusta el tamaño de los iconos en formato mobile según sea necesario */
+        height: 40px;
+        margin-bottom: 5px; /* Ajusta el espacio entre los iconos en formato mobile */
+    }
+}
 
         /* Estilos para el enlace del documento */
         a.document-link {
