@@ -91,7 +91,12 @@
 
         /* Estilos del párrafo h6 */
         h6 {
-            color: #e0ffff;
+            color: #00ced1;
+            font-size: 18px;
+            font-family: coursive;
+            text-align: left;
+            margin: 10px;
+            text-decoration: underline #ff02ea;
         }
 
         /* Estilos generales del párrafo */
@@ -367,6 +372,12 @@
             right: 0;
         }
 
+        /*etiquetas p de tecnologias*/
+        #tecnologias p {
+            color: rgb(255, 255, 255); /* Color de texto azul */
+            margin-left: 20px; /* Espaciado a la izquierda para simular una lista */
+        }
+
 
 
     </style>
@@ -488,7 +499,7 @@
 
         <section id="tecnologias">
             <h2>  Tecnologías  </h2>
-            <ul class="technologies">
+            <!--<ul class="technologies">
                 <li>Python</li>
                 <li>Django</li>
                 <li>HTML</li>
@@ -497,7 +508,27 @@
                 <li>Pandas</li>
                 <li>Git</li>
                 <li>GitHub</li>
-            </ul>
+            </ul> -->
+
+            <h6>Lenguajes de Programación:</h6>
+            <p>Python (lenguaje principal para desarrollo)</p>
+            <p>JavaScript (para programación del lado del cliente)</p>
+
+            <h6>Frameworks y Bibliotecas:</h6>
+            <p>Django (framework de desarrollo web en Python)</p>
+            <p>Pandas (biblioteca de manipulación y análisis de datos en Python)</p>
+
+            <h6>Tecnologías Web:</h6>
+            <p>HTML (lenguaje de marcado para estructurar el contenido)</p>
+            <p>CSS (lenguaje de estilo para diseñar la presentación)</p>
+            <p>JavaScript (para mejorar la interactividad del lado del cliente)</p>
+
+            <h6>Control de Versiones:</h6>
+            <p>Git (sistema de control de versiones distribuido)</p>
+            <p>GitHub (plataforma de alojamiento de repositorios Git)</p>
+
+
+
         </section>
 
         <section class="cv-section" id="mi-cv">
@@ -605,6 +636,18 @@
     });
 });
     </script>
+
+<script>
+    // Función para resaltar la primera palabra de cada párrafo
+    document.addEventListener('DOMContentLoaded', function() {
+        var paragraphs = document.querySelectorAll('#tecnologias p');
+        paragraphs.forEach(function(paragraph) {
+            var words = paragraph.textContent.split(' ');
+            var firstWord = words.shift(); // Obtener la primera palabra
+            paragraph.innerHTML = `<span style="color: orange; font-weight: bold;">${firstWord}</span> ${words.join(' ')}`;
+        });
+    });
+</script>
 
 </body>
 </html>
