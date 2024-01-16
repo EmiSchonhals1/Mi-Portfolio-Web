@@ -10,10 +10,14 @@
     <link rel="icon" href="{% static 'favicon\icono_navegador.png' %}" type="image/x-icon">
     <link rel="shortcut icon" href="{% static 'favicon\icono_navegador.png' %}" type="image/x-icon">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tektur:wght@400..900&display=swap" rel="stylesheet">
+
     <style>
         /* Estilos generales del cuerpo de la página */
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: "Comfortaa", sans-serif;
     background-color: #000000;
     color: #fff;
     margin: 0;
@@ -25,7 +29,7 @@ body {
 h1 {
     text-align: center;
     color: rgb(17, 223, 205);
-    font-family: 'Copperplate Gothic', sans-serif; /* Fuente Copperplate Gothic */
+    font-family: 'Tektur', sans-serif; 
     margin-top: 50px;
     font-size: 36px;
 }
@@ -47,6 +51,8 @@ li {
     box-shadow: 0 0 12px rgb(17, 223, 205);
     transition: transform 0.3s ease-in-out;
     max-width: 300px;
+    border: 10px;
+    border-radius: 20px;
 }
 
 /* Efecto de escala al pasar el ratón sobre cada proyecto */
@@ -56,7 +62,7 @@ li:hover {
 
 /* Estilos del título del proyecto */
 h2 {
-    font-family: 'Consolas', monospace; /* Fuente Consolas */
+    font-family: 'Comfortaa', monospace; 
     color: #ff02ea;
     margin-bottom: 10px;
 }
