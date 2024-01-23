@@ -383,6 +383,12 @@
             margin-left: 20px; /* Espaciado a la izquierda para simular una lista */
         }
 
+        /* Estilo para resaltar manualmente elementos en negrita y color específico */
+        .resaltar-manualmente {
+            color: #f3bd09;
+            font-weight: bold;
+        }
+
 
 
     </style>
@@ -400,10 +406,10 @@
         <a class="scroll-section" href="#quien-soy">Quién Soy</a>  |
         <a class="scroll-section" href="#datos-contacto">Datos de Contacto</a>  |
         <a href="{% url 'portfolio' %}">Mis Proyectos</a>  |
-        <a href="{% url 'aprendizaje' %}">Mi Aprendizaje</a>  |
         <a class="scroll-section" href="#habilidades-tecnicas">Habilidades Técnicas</a>  |
-        <a class="scroll-section" href="#habilidades-blandas">Habilidades Blandas</a>  |
         <a class="scroll-section" href="#tecnologias">Tecnologías</a>  |
+        <a href="{% url 'aprendizaje' %}">Mi Aprendizaje</a>  |
+        <a class="scroll-section" href="#habilidades-blandas">Habilidades Blandas</a>  |
         <a class="scroll-section" href="#mi-cv">Mi CV</a>
     </nav>
 
@@ -422,7 +428,7 @@
         <section id="quien-soy">
             <h2>  Quién Soy </h2>
             <!-- las etiquetas span permiten que lo que esté en ellas este resaltado como querramos, en este caso en color celeste, y las etiquetas strong sirven para poner en negrita-->
-            <p>Soy  <strong><span class="resaltado">Emiliano Schonhals</span></strong>, un aplicado y creativo <strong><span class="resaltado">desarrollador web</span></strong>. </p> 
+            <p><strong><span class="resaltado">Emiliano Schonhals</span></strong>, un aplicado y creativo <strong><span class="resaltado">desarrollador web</span></strong>. </p> 
             <p>Además de eso tengo experiencia en otros sectores del desarrollo de software.</p>
             <p> Te doy la bienvenida a mi portafolio, aquí encontrarás una muestra de mis proyectos y habilidades. Explora y no dudes en contactarme para colaboraciones o más información.</p>
             <h4>----> Actualmente estoy buscando oportunidades laborales y proyectos <----</h4>
@@ -438,7 +444,7 @@
             <h5><span>Instagram:</span> <a href="https://www.instagram.com/emischonhals/" target="_blank">emischonhals</a> ig</h5> -->
 
             <!--redireccionamiento con íconos-->
-            <a href="tel:+5493434258024" title="Teléfono"><img src="{% static 'icons/whatsapp.png' %}" alt="Teléfono" class="contact-icon"></a>
+            <a href="https://wa.link/9f1vnf" title="Teléfono"><img src="{% static 'icons/whatsapp.png' %}" alt="Teléfono" class="contact-icon"></a>
             <a href="mailto:emischonhals@gmail.com" title="Email"><img src="{% static 'icons/email.png' %}" alt="Email" class="contact-icon"></a>
             <a href="https://www.linkedin.com/in/emilianoschonhals" target="_blank" title="LinkedIn"><img src="{% static 'icons/linkedin.png' %}" alt="LinkedIn" class="contact-icon"></a>
             <a href="https://github.com/EmiSchonhals1" target="_blank" title="GitHub"><img src="{% static 'icons/github.png' %}" alt="GitHub" class="contact-icon"></a>
@@ -453,6 +459,46 @@
             <a href="portfolio" class="ver-proyectos"><strong><span>Ver Proyectos</span></strong></a>
         </section>
 
+        <section id="habilidades-tecnicas">
+            <h2>  Habilidades Técnicas  </h2>
+            <ul>
+                <li>☑ Desarrollo Web Fullstack</li>
+                <li>☑ Desarrollo de scripts en Python</li>
+                <li>☑ Automatizaciones de procesos y archivos Excel</li>
+                <li>☑ Manejo de archivos txt, csv y xlsx</li>
+            </ul>
+        </section>
+
+        <section id="tecnologias">
+            <h2>  Tecnologías  </h2>
+            <!--<ul class="technologies">
+                <li>Python</li>
+                <li>Django</li>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+                <li>Pandas</li>
+                <li>Git</li>
+                <li>GitHub</li>
+            </ul> -->
+            
+            <h6>Lenguajes de Programación:</h6>
+            <p><span class="resaltar-manualmente">Python</span> (lenguaje principal para desarrollo)</p>
+            <p><span class="resaltar-manualmente">JavaScript</span> (para programación del lado del cliente)</p>
+
+            <h6>Frameworks y Bibliotecas:</h6>
+            <p><span class="resaltar-manualmente">Django</span> (framework de desarrollo web en Python)</p>
+            <p><span class="resaltar-manualmente">Pandas</span> (biblioteca de manipulación y análisis de datos en Python)</p>
+
+            <h6>Tecnologías Web:</h6>
+            <p><span class="resaltar-manualmente">HTML</span> (lenguaje de marcado para estructurar el contenido)</p>
+            <p><span class="resaltar-manualmente">CSS</span> (lenguaje de estilo para diseñar la presentación)</p>
+            <p><span class="resaltar-manualmente">JavaScript</span> (para mejorar la interactividad del lado del cliente)</p>
+
+            <h6>Control de Versiones:</h6>
+            <p><span class="resaltar-manualmente">Git</span> (sistema de control de versiones distribuido)</p>
+            <p><span class="resaltar-manualmente">GitHub</span> (plataforma de alojamiento de repositorios Git)</p>
+
         <section id="mis-documentos">
             <h2>  Mi Aprendizaje  </h2>
             <strong><p>¿Quieres conocer como he llegado hasta aquí?</p></strong>
@@ -463,15 +509,6 @@
             </a>
         </section>
 
-        <section id="habilidades-tecnicas">
-            <h2>  Habilidades Técnicas  </h2>
-            <ul>
-                <li>☑ Desarrollo Web Fullstack</li>
-                <li>☑ Desarrollo de scripts en Python</li>
-                <li>☑ Automatizaciones de procesos y archivos Excel</li>
-                <li>☑ Manejo de archivos txt, csv y xlsx</li>
-            </ul>
-        </section>
 
         <section id="habilidades-blandas">
             <h2>  Habilidades Blandas  </h2>
@@ -502,35 +539,7 @@
             </ul>
         </section>
 
-        <section id="tecnologias">
-            <h2>  Tecnologías  </h2>
-            <!--<ul class="technologies">
-                <li>Python</li>
-                <li>Django</li>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-                <li>Pandas</li>
-                <li>Git</li>
-                <li>GitHub</li>
-            </ul> -->
-
-            <h6>Lenguajes de Programación:</h6>
-            <p>Python (lenguaje principal para desarrollo)</p>
-            <p>JavaScript (para programación del lado del cliente)</p>
-
-            <h6>Frameworks y Bibliotecas:</h6>
-            <p>Django (framework de desarrollo web en Python)</p>
-            <p>Pandas (biblioteca de manipulación y análisis de datos en Python)</p>
-
-            <h6>Tecnologías Web:</h6>
-            <p>HTML (lenguaje de marcado para estructurar el contenido)</p>
-            <p>CSS (lenguaje de estilo para diseñar la presentación)</p>
-            <p>JavaScript (para mejorar la interactividad del lado del cliente)</p>
-
-            <h6>Control de Versiones:</h6>
-            <p>Git (sistema de control de versiones distribuido)</p>
-            <p>GitHub (plataforma de alojamiento de repositorios Git)</p>
+        
 
 
 
@@ -642,17 +651,6 @@
 });
     </script>
 
-<script>
-    // Función para resaltar la primera palabra de cada párrafo
-    document.addEventListener('DOMContentLoaded', function() {
-        var paragraphs = document.querySelectorAll('#tecnologias p');
-        paragraphs.forEach(function(paragraph) {
-            var words = paragraph.textContent.split(' ');
-            var firstWord = words.shift(); // Obtener la primera palabra
-            paragraph.innerHTML = `<span style="color: orange; font-weight: bold;">${firstWord}</span> ${words.join(' ')}`;
-        });
-    });
-</script>
 
 </body>
 </html>
